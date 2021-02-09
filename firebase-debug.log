@@ -1,0 +1,21 @@
+[debug] [2021-02-09T16:57:42.186Z] ----------------------------------------------------------------------
+[debug] [2021-02-09T16:57:42.188Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\georg\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2021-02-09T16:57:42.189Z] CLI Version:   9.3.0
+[debug] [2021-02-09T16:57:42.189Z] Platform:      win32
+[debug] [2021-02-09T16:57:42.189Z] Node Version:  v12.16.3
+[debug] [2021-02-09T16:57:42.190Z] Time:          Tue Feb 09 2021 08:57:42 GMT-0800 (Pacific Standard Time)
+[debug] [2021-02-09T16:57:42.190Z] ----------------------------------------------------------------------
+[debug] [2021-02-09T16:57:42.190Z] 
+[debug] [2021-02-09T16:57:42.197Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-02-09T16:57:42.198Z] > authorizing via signed-in user
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\georg\OneDrive\Desktop\Projects\nextfire-app
+
