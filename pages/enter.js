@@ -2,6 +2,7 @@ import { auth, googleAuthProvider } from "../lib/firebase";
 import { UserContext } from "../lib/context";
 import { useEffect, useState, useCallback, useContext } from "react";
 import debounce from "lodash.debounce";
+import { firestore } from "../lib/firebase";
 
 export default function Enter(props) {
   const { user, username } = useContext(UserContext);
@@ -95,11 +96,42 @@ const UsernameForm = () => {
     []
   );
 
+  const onSubmit = async (e) => {
+    e.preventDefault();
+
+    // Create refs for both documents
+    const userDoc = firestore.doc(`users/${user.uid}`);
+    const usernameDoc = firestore.doc(`usernames/${formValue}`);
+
+    // Commit both docs together as a batch write.
+    const batch = firestore.batch();
+    batch.set(userDoc, {
+      username: formValue,
+      photoURL: user.photoURL,
+      displayName: user.displayName,
+    });
+    batch.set(usernameDoc, { uid: user.uid });
+
+    await batch.commit();
+  };
+
+  function UsernameMessage({ username, isValid, loading }) {
+    if (loading) {
+      return <p>Checking...</p>;
+    } else if (isValid) {
+      return <p className="text-success">{username} is available!</p>;
+    } else if (username && !isValid) {
+      return <p className="text-danger">That username is taken!</p>;
+    } else {
+      return <p></p>;
+    }
+  }
+
   return (
     !username && (
       <section>
         <h3>Choose Username</h3>
-        <form>
+        <form onSubmit={onSubmit}>
           <input
             name="username"
             placeholder="myname"
@@ -128,15 +160,3 @@ const UsernameForm = () => {
     )
   );
 };
-
-function UsernameMessage({ username, isValid, loading }) {
-  if (loading) {
-    return <p>Checking...</p>;
-  } else if (isValid) {
-    return <p className="text-success">{username} is available!</p>;
-  } else if (username && !isValid) {
-    return <p className="text-danger">That username is taken!</p>;
-  } else {
-    return <p></p>;
-  }
-}
