@@ -24,7 +24,7 @@ export async function getServerSideProps({ query }) {
   }
 
   return {
-    props: { user },
+    props: { user, posts },
   };
 }
 
@@ -36,7 +36,7 @@ export default function UserProfilePage({ user, posts }) {
         description={`${user.username}'s public profile`}
       /> */}
       <UserProfile user={user} />
-      {/* <PostFeed posts={posts} /> */}
+      <PostFeed posts={posts} />
     </main>
   );
 }
