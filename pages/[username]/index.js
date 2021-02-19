@@ -23,6 +23,8 @@ export async function getServerSideProps({ query }) {
     posts = (await postsQuery.get()).docs.map(postToJSON);
   }
 
+  // const singlePost = fs.doc(`users/`)
+
   return {
     props: { user, posts },
   };
