@@ -94,12 +94,15 @@ export default function Home({ posts }) {
       >
         <a>Jeff's profile</a>
       </Link>
-      <Loader show></Loader>
+      {/* <Loader show></Loader> */}
       {/* <button onClick={() => toast.success("hello toast!")}>toast me</button> */}
       {/* <button onClick={() => handleAddFakePost()}>Add fake post to db</button> */}
-      <button onClick={getMorePosts}>Get More Posts</button>
+      {/* <button onClick={getMorePosts}>Get More Posts</button> */}
       <PostFeed posts={myPosts} admin={true}></PostFeed>
-      {postsEnd && 'You have reached the end!'}
+      {!loading && !postsEnd && (
+        <button onClick={getMorePosts}>Load more</button>
+      )}
+      {postsEnd && "You have reached the end!"}
     </div>
   );
 }
