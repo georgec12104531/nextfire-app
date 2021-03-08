@@ -5,8 +5,6 @@ import { getUserFromUsername, postToJSON } from "../../lib/helper";
 
 export async function getServerSideProps({ query }) {
   const { username } = query;
-  console.log("username: ", username);
-
   const userDoc = await getUserFromUsername(username);
 
   // If no user, short circuit to 404 page
